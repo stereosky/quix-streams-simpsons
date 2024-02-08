@@ -14,7 +14,7 @@ variables:
   - name: PG_PORT
     inputType: FreeText
     description: Port of Postgres
-    defaultValue: 5432
+    defaultValue: 19345
     required: true
   - name: PG_USER
     inputType: FreeText
