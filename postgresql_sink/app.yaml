@@ -9,7 +9,7 @@ variables:
   - name: PG_HOST
     inputType: FreeText
     description: Host name of Postgres
-    defaultValue: ''
+    defaultValue: pg-2212dcf9-stereosky-ad4e.a.aivencloud.com
     required: true
   - name: PG_PORT
     inputType: FreeText
