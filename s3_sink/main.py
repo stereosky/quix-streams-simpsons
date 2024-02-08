@@ -13,6 +13,10 @@ s3_client = boto3.client(
     aws_secret_access_key=os.environ("aws_access_key")
 )
 
+def upload_df(df):
+    
+    return True
+
 def upload_file(file_name, bucket, object_name=None):
     """Upload a file to an S3 bucket
 
@@ -47,7 +51,7 @@ input_topic = app.topic(os.environ("input"), value_deserializer="json")
 sdf = app.dataframe(input_topic)
 
 # Print the transformed message to the console
-sdf = sdf.update(lambda val: print(f"Sending update: {val}"))
+sdf.apply(upload_df)
 
 if __name__ == "__main__":
     # Start message processing
