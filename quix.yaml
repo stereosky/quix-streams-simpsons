@@ -9,7 +9,7 @@ deployments:
   - name: Simpsons Data Source
     application: simpsons_data_source
     deploymentType: Service
-    version: b81b0d36984a71d6b3fe4b0a92fa2a59eb334f4b
+    version: 50e1025052b8f1c29571c3716f26764c5f2b0257
     resources:
       cpu: 200
       memory: 500
@@ -24,7 +24,7 @@ deployments:
   - name: Dialogue Counter
     application: dialogue_counter
     deploymentType: Service
-    version: b81b0d36984a71d6b3fe4b0a92fa2a59eb334f4b
+    version: 50e1025052b8f1c29571c3716f26764c5f2b0257
     resources:
       cpu: 200
       memory: 500
@@ -44,7 +44,7 @@ deployments:
   - name: Profanity Censor
     application: profanity_censor
     deploymentType: Service
-    version: b81b0d36984a71d6b3fe4b0a92fa2a59eb334f4b
+    version: 50e1025052b8f1c29571c3716f26764c5f2b0257
     resources:
       cpu: 200
       memory: 500
