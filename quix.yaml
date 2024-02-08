@@ -142,7 +142,7 @@ deployments:
     publicAccess:
       enabled: true
       urlPrefix: kconnect-jdbc-sink-73e361d
-    desiredStatus: Running
+    desiredStatus: Stopped
     variables:
       - name: input
         inputType: InputTopic
