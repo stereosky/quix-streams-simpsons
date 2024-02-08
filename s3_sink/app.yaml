@@ -14,7 +14,7 @@ variables:
   - name: batch_msg_count
     inputType: FreeText
     description: Message count in the batch (0 saves data as they arrive, -1 disables batching based on message count)
-    defaultValue: 0
+    defaultValue: 1
     required: false
   - name: parameters
     inputType: FreeText
