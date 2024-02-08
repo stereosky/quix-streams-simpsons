@@ -64,7 +64,7 @@ deployments:
   - name: Kafka Connect Sink
     application: Kafka Connect Sink
     deploymentType: Service
-    version: 646207667d00684a4754695ba41a914b10bdee34
+    version: 52ed4beb68a62ac6a33a5c3bf245d147cb204d5c
     resources:
       cpu: 200
       memory: 500
