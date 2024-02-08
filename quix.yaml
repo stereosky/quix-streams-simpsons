@@ -134,7 +134,7 @@ deployments:
   - name: KConnect JDBC Sink
     application: kconnect_jdbc_sink
     deploymentType: Service
-    version: 08d6d3701cb12773c86aa4f07d3e3021e9161bfc
+    version: 73e361d9d59d3dbd10f28dc81e497c7023f52a7f
     resources:
       cpu: 200
       memory: 500
