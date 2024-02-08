@@ -288,12 +288,12 @@ deployments:
         inputType: HiddenText
         description: AWS S3 access key id
         required: false
-        value: ''
+        value: AKIA5JJJFC76A5Z2H75L
       - name: aws_access_key
         inputType: HiddenText
         description: AWS S3 access key
         required: false
-        value: ''
+        value: gvRxpX1r8IsXfwa0gsq1mukehnCOV/zGftGX2bJv
       - name: s3_bucket
         inputType: FreeText
         description: AWS S3 bucket name
