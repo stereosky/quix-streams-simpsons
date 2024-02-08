@@ -4,6 +4,9 @@ from botocore.exceptions import ClientError
 import os
 import pandas as pd
 
+import pyarrow as pa
+import pyarrow.parquet as pq
+
 from dotenv import load_dotenv
 from quixstreams import Application, State, message_key
 
@@ -13,30 +16,24 @@ s3_client = boto3.client(
     aws_secret_access_key=os.environ("aws_access_key")
 )
 
-def upload_df(df):
+def write_pandas_parquet_to_s3(df, bucketName, keyName, fileName):
+    # dummy dataframe
+    table = pa.Table.from_pandas(df)
+    pq.write_table(table, fileName)
+
+    # upload to s3
+    s3 = boto3.client("s3")
+    BucketName = bucketName
+    with open(fileName) as f:
+       object_data = f.read()
+       s3.put_object(Body=object_data, Bucket=BucketName, Key=keyName)
+
+def upload_row(row: dict):
+    df = pd.DataFrame.from_dict(row, orient='index')
+    write_pandas_parquet_to_s3(
+        df, "bucket", "folder/test/file.parquet", ".tmp/file.parquet")
     
-    return True
-
-def upload_file(file_name, bucket, object_name=None):
-    """Upload a file to an S3 bucket
-
-    :param file_name: File to upload
-    :param bucket: Bucket to upload to
-    :param object_name: S3 object name. If not specified then file_name is used
-    :return: True if file was uploaded, else False
-    """
-
-    # If S3 object_name was not specified, use file_name
-    if object_name is None:
-        object_name = os.path.basename(file_name)
-
-    # Upload the file
-    try:
-        response = s3_client.upload_file(file_name, bucket, object_name)
-    except ClientError as e:
-        logging.error(e)
-        return False
-    return True
+    return row
 
 app = Application.Quix(
     "s3_sink",
@@ -51,7 +48,7 @@ input_topic = app.topic(os.environ("input"), value_deserializer="json")
 sdf = app.dataframe(input_topic)
 
 # Print the transformed message to the console
-sdf.apply(upload_df)
+sdf.apply(upload_row)
 
 if __name__ == "__main__":
     # Start message processing
