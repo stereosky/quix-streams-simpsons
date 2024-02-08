@@ -4,7 +4,7 @@ variables:
   - name: input
     inputType: InputTopic
     description: This is the input topic from which to sink from
-    defaultValue: kafka-connect-sink-topic
+    defaultValue: dialogue-censored
     required: true
   - name: CONNECT_OFFSET_STORAGE_TOPIC
     inputType: FreeText
