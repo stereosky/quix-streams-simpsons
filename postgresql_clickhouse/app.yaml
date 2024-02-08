@@ -29,8 +29,8 @@ variables:
   - name: PG_DATABASE
     inputType: FreeText
     description: Database name of Postgres
-    defaultValue: ''
-    required: true
+    defaultValue: default
+    required: false
   - name: PG_SCHEMA
     inputType: FreeText
     description: Schema name of Postgres
