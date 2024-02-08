@@ -31,7 +31,7 @@ def write_pandas_parquet_to_s3(df, bucketName, keyName, fileName):
 def upload_row(row: dict):
     df = pd.DataFrame.from_dict(row, orient='index')
     write_pandas_parquet_to_s3(
-        df, "bucket", "folder/test/file.parquet", ".tmp/file.parquet")
+        df, os.environ("s3_bucket"), "folder/test/file.parquet", ".tmp/file.parquet")
     
     return row
 
