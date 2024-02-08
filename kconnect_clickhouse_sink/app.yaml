@@ -24,6 +24,6 @@ variables:
   - name: CONNECTOR_NAME
     inputType: FreeText
     description: The confluent hub (https://www.confluent.io/hub, free connectors only for now) kafka connector to use
-    defaultValue: ''
+    defaultValue: clickhouse/clickhouse-kafka-connect:v1.0.10
     required: true
 dockerfile: dockerfile
