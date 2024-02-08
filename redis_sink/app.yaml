@@ -19,7 +19,7 @@ variables:
   - name: redis_password
     inputType: Secret
     description: Password for the Redis instance
-    defaultValue: AVNS_k2oajNoRcv3fQ_4eloa
+    defaultValue: redis_password
     required: false
   - name: redis_username
     inputType: FreeText
