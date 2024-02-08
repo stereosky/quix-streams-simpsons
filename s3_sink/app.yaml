@@ -34,7 +34,7 @@ variables:
   - name: s3_bucket
     inputType: FreeText
     description: AWS S3 bucket name
-    defaultValue: ''
+    defaultValue: hackathon-quix-tun
     required: true
   - name: prefix
     inputType: FreeText
