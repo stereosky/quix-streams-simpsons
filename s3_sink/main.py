@@ -2,6 +2,7 @@ import logging
 import boto3
 from botocore.exceptions import ClientError
 import os
+import pandas as pd
 
 from dotenv import load_dotenv
 from quixstreams import Application, State, message_key
