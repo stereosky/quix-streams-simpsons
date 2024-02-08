@@ -1,0 +1,29 @@
+name: KConnect ClickHouse Sink
+language: python
+variables:
+  - name: input
+    inputType: InputTopic
+    description: This is the input topic from which to sink from
+    defaultValue: dialogue-censored
+    required: true
+  - name: CONNECT_OFFSET_STORAGE_TOPIC
+    inputType: FreeText
+    description: Topic name to use for storing kafka connect offsets
+    defaultValue: connect-offsets-sink
+    required: true
+  - name: CONNECT_CONFIG_STORAGE_TOPIC
+    inputType: FreeText
+    description: Topic name to use for storing connector and task configurations for kafka connect
+    defaultValue: connect-configs-sink
+    required: true
+  - name: CONNECT_STATUS_STORAGE_TOPIC
+    inputType: FreeText
+    description: Topic name to use for storing statuses for kafka connect
+    defaultValue: connect-status-sink
+    required: true
+  - name: CONNECTOR_NAME
+    inputType: FreeText
+    description: The confluent hub (https://www.confluent.io/hub, free connectors only for now) kafka connector to use
+    defaultValue: ''
+    required: true
+dockerfile: dockerfile
