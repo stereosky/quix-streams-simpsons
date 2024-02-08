@@ -61,6 +61,41 @@ deployments:
         description: Name of the output topic to write to.
         required: true
         value: dialogue-censored
+  - name: Kafka Connect Sink
+    application: Kafka Connect Sink
+    deploymentType: Service
+    version: 646207667d00684a4754695ba41a914b10bdee34
+    resources:
+      cpu: 200
+      memory: 500
+      replicas: 1
+    desiredStatus: Running
+    variables:
+      - name: input
+        inputType: InputTopic
+        description: This is the input topic from which to sink from
+        required: true
+        value: dialogue-censored
+      - name: CONNECT_OFFSET_STORAGE_TOPIC
+        inputType: FreeText
+        description: Topic name to use for storing kafka connect offsets
+        required: true
+        value: connect-offsets-sink
+      - name: CONNECT_CONFIG_STORAGE_TOPIC
+        inputType: FreeText
+        description: Topic name to use for storing connector and task configurations for kafka connect
+        required: true
+        value: connect-configs-sink
+      - name: CONNECT_STATUS_STORAGE_TOPIC
+        inputType: FreeText
+        description: Topic name to use for storing statuses for kafka connect
+        required: true
+        value: connect-status-sink
+      - name: CONNECTOR_NAME
+        inputType: FreeText
+        description: The confluent hub (https://www.confluent.io/hub, free connectors only for now) kafka connector to use
+        required: true
+        value: jcustenborder/kafka-connect-redis:0.0.5
 
 # This section describes the Topics of the data pipeline
 topics:
