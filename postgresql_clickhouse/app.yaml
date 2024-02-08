@@ -34,7 +34,7 @@ variables:
   - name: PG_SCHEMA
     inputType: FreeText
     description: Schema name of Postgres
-    defaultValue: public
+    defaultValue: default
     required: true
   - name: MAX_QUEUE_SIZE
     inputType: FreeText
