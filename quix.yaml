@@ -169,6 +169,56 @@ deployments:
         description: The confluent hub (https://www.confluent.io/hub, free connectors only for now) kafka connector to use
         required: true
         value: confluentinc/kafka-connect-jdbc:10.7.4
+  - name: PostgreSQL Sink
+    application: postgresql_sink
+    deploymentType: Service
+    version: 14a487353817a9e431ffb0efa683d3f0ce6c56bd
+    resources:
+      cpu: 200
+      memory: 500
+      replicas: 1
+    desiredStatus: Running
+    variables:
+      - name: input
+        inputType: InputTopic
+        description: This is the input topic
+        required: true
+        value: dialogue-censored
+      - name: PG_HOST
+        inputType: FreeText
+        description: Host name of Postgres
+        required: true
+        value: pg-2212dcf9-stereosky-ad4e.a.aivencloud.com
+      - name: PG_PORT
+        inputType: FreeText
+        description: Port of Postgres
+        required: true
+        value: 19344
+      - name: PG_USER
+        inputType: FreeText
+        description: Username of Postgres
+        required: true
+        value: avnadmin
+      - name: PG_PASSWORD
+        inputType: HiddenText
+        description: Password of Postgres
+        required: true
+        value: AVNS_6eaSngQ5JIHzLcwaL2j
+      - name: PG_DATABASE
+        inputType: FreeText
+        description: Database name of Postgres
+        required: true
+        value: defaultdb
+      - name: PG_SCHEMA
+        inputType: FreeText
+        description: Schema name of Postgres
+        required: true
+        value: public
+      - name: MAX_QUEUE_SIZE
+        inputType: FreeText
+        description: Max queue size for the sink ingestion
+        required: true
+        value: 50
 
 # This section describes the Topics of the data pipeline
 topics:
