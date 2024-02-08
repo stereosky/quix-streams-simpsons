@@ -169,56 +169,6 @@ deployments:
         description: The confluent hub (https://www.confluent.io/hub, free connectors only for now) kafka connector to use
         required: true
         value: confluentinc/kafka-connect-jdbc:10.7.4
-  - name: PostgreSQL ClickHouse
-    application: postgresql_clickhouse
-    deploymentType: Service
-    version: bf621b37903766fc7085b834a6ba5999d09c7458
-    resources:
-      cpu: 200
-      memory: 500
-      replicas: 1
-    desiredStatus: Stopped
-    variables:
-      - name: input
-        inputType: InputTopic
-        description: This is the input topic
-        required: true
-        value: dialogue-censored
-      - name: PG_HOST
-        inputType: FreeText
-        description: Host name of Postgres
-        required: true
-        value: clickhouse-53692b2-stereosky-ad4e.a.aivencloud.com
-      - name: PG_PORT
-        inputType: FreeText
-        description: Port of Postgres
-        required: true
-        value: 19345
-      - name: PG_USER
-        inputType: FreeText
-        description: Username of Postgres
-        required: true
-        value: avnadmin
-      - name: PG_PASSWORD
-        inputType: HiddenText
-        description: Password of Postgres
-        required: true
-        value: AVNS_3N2QZiHBUv9NT7Z84Ko
-      - name: PG_DATABASE
-        inputType: FreeText
-        description: Database name of Postgres
-        required: false
-        value: default
-      - name: PG_SCHEMA
-        inputType: FreeText
-        description: Schema name of Postgres
-        required: true
-        value: default
-      - name: MAX_QUEUE_SIZE
-        inputType: FreeText
-        description: Max queue size for the sink ingestion
-        required: true
-        value: 50
 
 # This section describes the Topics of the data pipeline
 topics:
