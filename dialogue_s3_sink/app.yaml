@@ -11,11 +11,6 @@ variables:
     description: AWS S3 bucket name
     defaultValue: hackathon-quix-tun
     required: true
-  - name: suffix
-    inputType: FreeText
-    description: File suffix (e.g. file type extension)
-    defaultValue: .csv
-    required: false
 dockerfile: dockerfile
 runEntryPoint: main.py
 defaultFile: main.py
