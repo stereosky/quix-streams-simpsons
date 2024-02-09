@@ -222,7 +222,7 @@ deployments:
   - name: "\U0001F4BE Dialogue S3 Sink"
     application: dialogue_s3_sink
     deploymentType: Service
-    version: ea25f248baebfb83477f84eb0ee8f3524954aaa8
+    version: b48b8c5f85968459ffa5a0c183189082f799c975
     resources:
       cpu: 200
       memory: 500
