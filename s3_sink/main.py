@@ -7,6 +7,7 @@ import pandas as pd
 import pyarrow as pa
 import pyarrow.parquet as pq
 from quixstreams import Application, State, message_key
+from quixstreams.models.serializers.quix import JSONDeserializer
 
 
 s3_client = boto3.client(
@@ -40,7 +41,7 @@ app = Application.Quix(
 )
 
 # Define an input topic with Quix deserializer
-input_topic = app.topic(os.environ["input"], value_deserializer="json")
+input_topic = app.topic(os.environ["input"], value_deserializer=JSONDeserializer())
 
 # Create a StreamingDataFrame and start building your processing pipeline
 sdf = app.dataframe(input_topic)
