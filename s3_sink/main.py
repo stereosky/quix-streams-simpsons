@@ -38,7 +38,6 @@ def upload_to_s3(row: dict):
         boto3_session=my_session
     )
 
-
     return row
 
 # apply the result of the count_names function to the row
