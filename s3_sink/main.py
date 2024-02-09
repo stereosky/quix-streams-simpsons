@@ -34,10 +34,7 @@ def upload_to_s3(row: dict):
     # Storing data on Data Lake
     wr.s3.to_parquet(
         df=df,
-        path="s3://hackathon-quix-tun/dataset/",
-        dataset=True,
-        database="my_db",
-        table="my_table",
+        path="s3://hackathon-quix-tun/dataset/test.parquet",
         boto3_session=my_session
     )
 
