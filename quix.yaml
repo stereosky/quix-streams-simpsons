@@ -6,41 +6,6 @@ metadata:
 
 # This section describes the Deployments of the data pipeline
 deployments:
-  - name: "\U0001F4BE Dialogue S3 Sink"
-    application: dialogue_s3_sink
-    deploymentType: Service
-    version: b48b8c5f85968459ffa5a0c183189082f799c975
-    resources:
-      cpu: 200
-      memory: 500
-      replicas: 1
-    desiredStatus: Running
-    variables:
-      - name: input
-        inputType: InputTopic
-        description: Input topic
-        required: true
-        value: simpsons-dialogue
-      - name: s3_bucket
-        inputType: FreeText
-        description: AWS S3 bucket name
-        required: true
-        value: hackathon-quix-tun
-      - name: AWS_ACCESS_KEY
-        inputType: Secret
-        description: ''
-        required: true
-        secretKey: aws_access_key
-      - name: AWS_SECRET_ACCESS_KEY
-        inputType: Secret
-        description: ''
-        required: true
-        secretKey: aws_secret_access_key
-      - name: AWS_REGION
-        inputType: FreeText
-        description: ''
-        required: true
-        value: eu-west-2
   - name: "\U0001F4BE Censored S3 Sink"
     application: s3_sink
     deploymentType: Service
@@ -329,6 +294,41 @@ deployments:
         description: Username for the Redis instance
         required: false
         value: default
+  - name: ☁️ Dialogue S3 Sink
+    application: dialogue_s3_sink
+    deploymentType: Service
+    version: b48b8c5f85968459ffa5a0c183189082f799c975
+    resources:
+      cpu: 200
+      memory: 500
+      replicas: 1
+    desiredStatus: Running
+    variables:
+      - name: input
+        inputType: InputTopic
+        description: Input topic
+        required: true
+        value: simpsons-dialogue
+      - name: s3_bucket
+        inputType: FreeText
+        description: AWS S3 bucket name
+        required: true
+        value: hackathon-quix-tun
+      - name: AWS_ACCESS_KEY
+        inputType: Secret
+        description: ''
+        required: true
+        secretKey: aws_access_key
+      - name: AWS_SECRET_ACCESS_KEY
+        inputType: Secret
+        description: ''
+        required: true
+        secretKey: aws_secret_access_key
+      - name: AWS_REGION
+        inputType: FreeText
+        description: ''
+        required: true
+        value: eu-west-2
 
 # This section describes the Topics of the data pipeline
 topics:
