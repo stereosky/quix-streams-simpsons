@@ -29,6 +29,8 @@ def upload_to_s3(row: dict):
     character_name = row['raw_character_text']
     timestamp = row['Timestamp']
     path = f"s3://hackathon-quix-tun/simpsons/{character_name}/{timestamp}.parquet"
+    
+    print(f"Writing to {path}")
     # Storing data in data lake
     wr.s3.to_parquet(
         df=pd.DataFrame(row, index=[0]),
