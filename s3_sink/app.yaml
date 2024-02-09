@@ -6,11 +6,6 @@ variables:
     description: Input topic
     defaultValue: dialogue-censored
     required: true
-  - name: parameters
-    inputType: FreeText
-    description: Comma separated list of parameters to look for in the received data
-    defaultValue: none
-    required: true
   - name: s3_bucket
     inputType: FreeText
     description: AWS S3 bucket name
