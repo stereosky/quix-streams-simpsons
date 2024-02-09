@@ -2,6 +2,7 @@ import os
 import pyarrow as pa
 import pyarrow.parquet as pq
 import pandas as pd
+import boto3
 
 from quixstreams import Application, State
 from quixstreams.models.serializers.quix import JSONDeserializer, JSONSerializer
