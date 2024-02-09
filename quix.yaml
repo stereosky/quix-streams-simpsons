@@ -6,41 +6,6 @@ metadata:
 
 # This section describes the Deployments of the data pipeline
 deployments:
-  - name: Redis Sink
-    application: redis_sink
-    deploymentType: Service
-    version: e51988fad69968f498fd43e22dc9eaf34c6f8884
-    resources:
-      cpu: 200
-      memory: 500
-      replicas: 1
-    desiredStatus: Stopped
-    variables:
-      - name: input
-        inputType: InputTopic
-        description: This is the input topic
-        required: true
-        value: dialogue-censored
-      - name: redis_host
-        inputType: FreeText
-        description: Host address for the Redis instance
-        required: true
-        value: redis-34fd767f-stereosky-ad4e.a.aivencloud.com
-      - name: redis_port
-        inputType: FreeText
-        description: Port for the Redis instance
-        required: true
-        value: 19345
-      - name: redis_password
-        inputType: Secret
-        description: Password for the Redis instance
-        required: false
-        secretKey: redis_password
-      - name: redis_username
-        inputType: FreeText
-        description: Username for the Redis instance
-        required: false
-        value: default
   - name: "\U0001F4BE Dialogue S3 Sink"
     application: dialogue_s3_sink
     deploymentType: Service
@@ -329,6 +294,41 @@ deployments:
         description: Max queue size for the sink ingestion
         required: true
         value: 50
+  - name: "\U0001F9F0 Redis Sink"
+    application: redis_sink
+    deploymentType: Service
+    version: e51988fad69968f498fd43e22dc9eaf34c6f8884
+    resources:
+      cpu: 200
+      memory: 500
+      replicas: 1
+    desiredStatus: Stopped
+    variables:
+      - name: input
+        inputType: InputTopic
+        description: This is the input topic
+        required: true
+        value: dialogue-censored
+      - name: redis_host
+        inputType: FreeText
+        description: Host address for the Redis instance
+        required: true
+        value: redis-34fd767f-stereosky-ad4e.a.aivencloud.com
+      - name: redis_port
+        inputType: FreeText
+        description: Port for the Redis instance
+        required: true
+        value: 19345
+      - name: redis_password
+        inputType: Secret
+        description: Password for the Redis instance
+        required: false
+        secretKey: redis_password
+      - name: redis_username
+        inputType: FreeText
+        description: Username for the Redis instance
+        required: false
+        value: default
 
 # This section describes the Topics of the data pipeline
 topics:
