@@ -329,6 +329,41 @@ deployments:
         description: ''
         required: false
         secretKey: aws_access_key
+  - name: ☁️ Dialogue Count S3 Sink
+    application: dialogue_counter_s3_sink
+    deploymentType: Service
+    version: fd53303fb561389aeb965d9fcfa8fec7a4992187
+    resources:
+      cpu: 200
+      memory: 500
+      replicas: 1
+    desiredStatus: Running
+    variables:
+      - name: input
+        inputType: InputTopic
+        description: Input topic
+        required: true
+        value: dialogue-counter
+      - name: s3_bucket
+        inputType: FreeText
+        description: AWS S3 bucket name
+        required: true
+        value: hackathon-quix-tun
+      - name: AWS_ACCESS_KEY
+        inputType: Secret
+        description: ''
+        required: true
+        secretKey: aws_access_key
+      - name: AWS_SECRET_ACCESS_KEY
+        inputType: Secret
+        description: ''
+        required: true
+        secretKey: aws_secret_access_key
+      - name: AWS_REGION
+        inputType: FreeText
+        description: ''
+        required: true
+        value: eu-west-2
 
 # This section describes the Topics of the data pipeline
 topics:
