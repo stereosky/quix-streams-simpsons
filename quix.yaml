@@ -257,7 +257,7 @@ deployments:
   - name: S3 Sink
     application: s3_sink
     deploymentType: Service
-    version: dc83f8b90229bcfab3d9464e3efffb4fba40e32d
+    version: c782c28828ccec20b28519d29af1923e75aef07f
     resources:
       cpu: 200
       memory: 500
