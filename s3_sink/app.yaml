@@ -11,11 +11,6 @@ variables:
     description: AWS S3 bucket name
     defaultValue: hackathon-quix-tun
     required: true
-  - name: s3_folder
-    inputType: FreeText
-    description: Name of the S3 folder to save to
-    defaultValue: ''
-    required: false
   - name: s3_folder_per_stream
     inputType: FreeText
     description: Flag to save different streams to different S3 folders.
