@@ -71,6 +71,11 @@ variables:
     description: ''
     defaultValue: eu-west-2
     required: false
+  - name: AWS_DEFAULT_REGION
+    inputType: FreeText
+    description: ''
+    defaultValue: eu-west-2
+    required: false
 dockerfile: dockerfile
 runEntryPoint: main.py
 defaultFile: main.py
