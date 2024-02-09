@@ -61,7 +61,7 @@ variables:
     description: Timezone from the IANA Time Zone Database (e.g. Asia/Singapore) for orchestrating time-based batching and file naming.
     defaultValue: GMT
     required: true
-  - name: aws_secret_access_key
+  - name: AWS_SECRET_ACCESS_KEY
     inputType: Secret
     description: ''
     defaultValue: aws_secret_access_key
