@@ -257,7 +257,7 @@ deployments:
   - name: S3 Sink
     application: s3_sink
     deploymentType: Service
-    version: bbb8588db658a47acdf08894e3b0b711dea694aa
+    version: 62c1a30ab7aa95f15d5bd44956a3fe73cc6b88a4
     resources:
       cpu: 200
       memory: 500
@@ -329,6 +329,11 @@ deployments:
         description: ''
         required: false
         secretKey: aws_secret_access_key
+      - name: aws_region
+        inputType: FreeText
+        description: ''
+        required: false
+        value: eu-west-2
 
 # This section describes the Topics of the data pipeline
 topics:
