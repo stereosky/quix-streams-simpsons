@@ -34,7 +34,6 @@ def upload_to_s3(row: dict):
        object_data = f.read()
        s3.put_object(Body=object_data, Bucket=os.environ["s3_bucket"], Key="test/file.parquet")
 
-    
     return row
 
 # apply the result of the count_names function to the row
