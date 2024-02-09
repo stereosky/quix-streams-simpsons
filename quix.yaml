@@ -254,10 +254,10 @@ deployments:
         description: Username for the Redis instance
         required: false
         value: default
-  - name: S3 Sink
+  - name: "\U0001F4BE S3 Censored Parquet"
     application: s3_sink
     deploymentType: Service
-    version: b9b6753d5b1f6cff9325db6dbc0d1ad18e0db71f
+    version: 52a3b17832e40b69197d0ba2f35b6be177bd76d3
     resources:
       cpu: 200
       memory: 500
