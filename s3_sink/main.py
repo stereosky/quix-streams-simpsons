@@ -1,5 +1,7 @@
 import os
 import pandas as pd
+import botocore
+
 import awswrangler as wr
 
 from quixstreams import Application, State
