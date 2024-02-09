@@ -26,13 +26,13 @@ sdf = app.dataframe(input_topic)
 
 def upload_to_s3(row: dict):
 
-    # df = pd.DataFrame.from_dict(row, orient='index')
-    df = pd.DataFrame(row, index=[0])
+    character_name = row['raw_character_text']
+    timestamp = row['Timestamp']
 
     # Storing data on Data Lake
     wr.s3.to_parquet(
-        df=df,
-        path=f"s3://hackathon-quix-tun/simpsons/{df['raw_character_text']}/test.parquet",
+        df=pd.DataFrame(row, index=[0]),
+        path=f"s3://hackathon-quix-tun/simpsons/{character_name}/{timestamp}.parquet",
         boto3_session=my_session
     )
 
