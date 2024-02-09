@@ -1,4 +1,5 @@
 quixstreams==2.2.1a
 boto3==1.34.38
+botocore==1.34.38
 pandas==2.2.0
 awswrangler==3.5.2
