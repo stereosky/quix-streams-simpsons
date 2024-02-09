@@ -13,6 +13,8 @@ my_session = boto3.Session(
     region_name=os.environ["AWS_REGION"]
 )
 
+s3_bucket = os.environ["s3_bucket"]
+
 # Create an Application.
 app = Application.Quix(
         consumer_group="s3_sink",
@@ -28,7 +30,7 @@ def upload_to_s3(row: dict):
 
     character_name = row['raw_character_text']
     timestamp = row['Timestamp']
-    path = f"s3://hackathon-quix-tun/simpsons/censored/{character_name}/{timestamp}.parquet"
+    path = f"s3://${s3_bucket}/simpsons/censored/{character_name}/{timestamp}.parquet"
     
     print(f"Writing to {path}")
     # Storing data in data lake
