@@ -3,8 +3,8 @@ import pandas as pd
 import boto3
 import awswrangler as wr
 
-from quixstreams import Application, State
-from quixstreams.models.serializers.quix import JSONDeserializer, JSONSerializer
+from quixstreams import Application
+from quixstreams.models.serializers.quix import JSONDeserializer
 
 
 my_session = boto3.Session(
