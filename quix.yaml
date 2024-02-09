@@ -6,44 +6,6 @@ metadata:
 
 # This section describes the Deployments of the data pipeline
 deployments:
-  - name: KConnect JDBC Sink
-    application: kconnect_jdbc_sink
-    deploymentType: Service
-    version: 73e361d9d59d3dbd10f28dc81e497c7023f52a7f
-    resources:
-      cpu: 200
-      memory: 500
-      replicas: 1
-    publicAccess:
-      enabled: true
-      urlPrefix: kconnect-jdbc-sink-73e361d
-    desiredStatus: Stopped
-    variables:
-      - name: input
-        inputType: InputTopic
-        description: This is the input topic from which to sink from
-        required: true
-        value: dialogue-censored
-      - name: CONNECT_OFFSET_STORAGE_TOPIC
-        inputType: FreeText
-        description: Topic name to use for storing kafka connect offsets
-        required: true
-        value: connect-offsets-sink
-      - name: CONNECT_CONFIG_STORAGE_TOPIC
-        inputType: FreeText
-        description: Topic name to use for storing connector and task configurations for kafka connect
-        required: true
-        value: connect-configs-sink
-      - name: CONNECT_STATUS_STORAGE_TOPIC
-        inputType: FreeText
-        description: Topic name to use for storing statuses for kafka connect
-        required: true
-        value: connect-status-sink
-      - name: CONNECTOR_NAME
-        inputType: FreeText
-        description: The confluent hub (https://www.confluent.io/hub, free connectors only for now) kafka connector to use
-        required: true
-        value: confluentinc/kafka-connect-jdbc:10.7.4
   - name: PostgreSQL Sink
     application: postgresql_sink
     deploymentType: Service
@@ -329,6 +291,44 @@ deployments:
         description: The confluent hub (https://www.confluent.io/hub, free connectors only for now) kafka connector to use
         required: true
         value: clickhouse/clickhouse-kafka-connect:v1.0.10
+  - name: ⚓️ KConnect JDBC Sink
+    application: kconnect_jdbc_sink
+    deploymentType: Service
+    version: 73e361d9d59d3dbd10f28dc81e497c7023f52a7f
+    resources:
+      cpu: 200
+      memory: 500
+      replicas: 1
+    publicAccess:
+      enabled: true
+      urlPrefix: kconnect-jdbc-sink-73e361d
+    desiredStatus: Stopped
+    variables:
+      - name: input
+        inputType: InputTopic
+        description: This is the input topic from which to sink from
+        required: true
+        value: dialogue-censored
+      - name: CONNECT_OFFSET_STORAGE_TOPIC
+        inputType: FreeText
+        description: Topic name to use for storing kafka connect offsets
+        required: true
+        value: connect-offsets-sink
+      - name: CONNECT_CONFIG_STORAGE_TOPIC
+        inputType: FreeText
+        description: Topic name to use for storing connector and task configurations for kafka connect
+        required: true
+        value: connect-configs-sink
+      - name: CONNECT_STATUS_STORAGE_TOPIC
+        inputType: FreeText
+        description: Topic name to use for storing statuses for kafka connect
+        required: true
+        value: connect-status-sink
+      - name: CONNECTOR_NAME
+        inputType: FreeText
+        description: The confluent hub (https://www.confluent.io/hub, free connectors only for now) kafka connector to use
+        required: true
+        value: confluentinc/kafka-connect-jdbc:10.7.4
 
 # This section describes the Topics of the data pipeline
 topics:
