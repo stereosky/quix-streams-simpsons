@@ -257,7 +257,7 @@ deployments:
   - name: S3 Sink
     application: s3_sink
     deploymentType: Service
-    version: 388fc56ba3c45c9af60cef9ed0a07a915507aa9b
+    version: c7efa08487272833283821176ee7ea06f28c361b
     resources:
       cpu: 200
       memory: 500
@@ -284,16 +284,6 @@ deployments:
         description: Comma separated list of parameters to look for in the received data
         required: true
         value: none
-      - name: aws_access_key_id
-        inputType: HiddenText
-        description: AWS S3 access key id
-        required: false
-        value: AKIA5JJJFC76A5Z2H75L
-      - name: aws_access_key
-        inputType: HiddenText
-        description: AWS S3 access key
-        required: false
-        value: gvRxpX1r8IsXfwa0gsq1mukehnCOV/zGftGX2bJv
       - name: s3_bucket
         inputType: FreeText
         description: AWS S3 bucket name
@@ -324,7 +314,7 @@ deployments:
         description: Timezone from the IANA Time Zone Database (e.g. Asia/Singapore) for orchestrating time-based batching and file naming.
         required: true
         value: GMT
-      - name: aws_secret_access_key
+      - name: AWS_SECRET_ACCESS_KEY
         inputType: Secret
         description: ''
         required: false
@@ -339,6 +329,11 @@ deployments:
         description: ''
         required: false
         value: eu-west-2
+      - name: AWS_ACCESS_KEY
+        inputType: Secret
+        description: ''
+        required: false
+        secretKey: aws_access_key
 
 # This section describes the Topics of the data pipeline
 topics:
