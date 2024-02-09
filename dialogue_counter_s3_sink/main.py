@@ -29,13 +29,12 @@ sdf = app.dataframe(input_topic)
 def upload_to_s3(row: dict):
 
     character_name = row['raw_character_text']
-    timestamp = row['Timestamp']
-    path = f"s3://${s3_bucket}/simpsons/censored/{character_name}/{timestamp}.parquet"
+    path = f"s3://{s3_bucket}/simpsons/counts/{character_name}.parquet"
     
     print(f"Writing to {path}")
     # Storing data in data lake
     wr.s3.to_parquet(
-        df=pd.DataFrame(row, index=[0]),
+        df=pd.DataFrame(row['count'], index=[0]),
         path=path,
         boto3_session=my_session
     )
