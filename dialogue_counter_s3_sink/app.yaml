@@ -16,11 +16,6 @@ variables:
     description: File suffix (e.g. file type extension)
     defaultValue: .csv
     required: false
-  - name: timezone
-    inputType: FreeText
-    description: Timezone from the IANA Time Zone Database (e.g. Asia/Singapore) for orchestrating time-based batching and file naming.
-    defaultValue: GMT
-    required: true
 dockerfile: dockerfile
 runEntryPoint: main.py
 defaultFile: main.py
