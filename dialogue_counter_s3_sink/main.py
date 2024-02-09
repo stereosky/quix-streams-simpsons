@@ -32,9 +32,10 @@ def upload_to_s3(row: dict):
     path = f"s3://{s3_bucket}/simpsons/counts/{character_name}.parquet"
     
     print(f"Writing to {path}")
+
     # Storing data in data lake
     wr.s3.to_parquet(
-        df=pd.DataFrame(row["count"], index=[0]),
+        df=pd.DataFrame({'name': character_name, 'count': row["count"]}, index=[0]),
         path=path,
         boto3_session=my_session
     )
