@@ -27,7 +27,7 @@ sdf = app.dataframe(input_topic)
 def upload_to_s3(row: dict):
 
     # df = pd.DataFrame.from_dict(row, orient='index')
-    df = pd.DataFrame(row)
+    df = pd.DataFrame(row, index=[0])
 
     # Storing data on Data Lake
     wr.s3.to_parquet(
