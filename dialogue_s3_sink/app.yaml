@@ -21,6 +21,11 @@ variables:
     description: ''
     defaultValue: aws_secret_access_key
     required: true
+  - name: AWS_REGION
+    inputType: FreeText
+    description: ''
+    defaultValue: eu-west-2
+    required: true
 dockerfile: dockerfile
 runEntryPoint: main.py
 defaultFile: main.py
