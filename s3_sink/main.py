@@ -6,9 +6,8 @@ import pandas as pd
 
 import pyarrow as pa
 import pyarrow.parquet as pq
-
-from dotenv import load_dotenv
 from quixstreams import Application, State, message_key
+
 
 s3_client = boto3.client(
     "s3",
