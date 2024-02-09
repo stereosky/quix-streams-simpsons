@@ -25,20 +25,13 @@ sdf = app.dataframe(input_topic)
 def upload_to_s3(row: dict):
 
     df = pd.DataFrame.from_dict(data, orient='index')
-    write_pandas_parquet_to_s3(
-        df, "bucket", "folder/test/file.parquet", ".tmp/file.parquet")
 
-    (df, bucketName, keyName, fileName):
-    # dummy dataframe
     table = pa.Table.from_pandas(df)
-    pq.write_table(table, fileName)
+    pq.write_table(table, ".tmp/file.parquet")
 
-    # upload to s3
-    s3 = boto3.client("s3")
-    BucketName = bucketName
     with open(fileName) as f:
        object_data = f.read()
-       s3.put_object(Body=object_data, Bucket=BucketName, Key=keyName)
+       s3.put_object(Body=object_data, Bucket=os.environ["s3_bucket"], Key="test/file.parquet")
 
     
     return row
