@@ -26,6 +26,7 @@ def write_pandas_parquet_to_s3(df, bucketName, keyName, fileName):
        s3_client.put_object(Body=object_data, Bucket=bucketName, Key=keyName)
 
 def upload_row(row: dict):
+    print("********** upload_row")
     df = pd.DataFrame.from_dict(row, orient='index')
     write_pandas_parquet_to_s3(
         df, os.environ["s3_bucket"], "test/file.parquet", ".tmp/file.parquet")
