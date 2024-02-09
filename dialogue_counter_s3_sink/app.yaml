@@ -11,6 +11,11 @@ variables:
     description: AWS S3 bucket name
     defaultValue: hackathon-quix-tun
     required: true
+  - name: AWS_ACCESS_KEY
+    inputType: Secret
+    description: ''
+    defaultValue: aws_access_key
+    required: true
 dockerfile: dockerfile
 runEntryPoint: main.py
 defaultFile: main.py
