@@ -1,6 +1,7 @@
 import os
 import pyarrow as pa
 import pyarrow.parquet as pq
+import pandas as pd
 
 from quixstreams import Application, State
 from quixstreams.models.serializers.quix import JSONDeserializer, JSONSerializer
@@ -24,16 +25,15 @@ sdf = app.dataframe(input_topic)
 
 def upload_to_s3(row: dict):
 
-    df = pd.DataFrame.from_dict(data, orient='index')
-
+    df = pd.DataFrame.from_dict(row, orient='index')
+    filename = ".tmp/file.parquet"
     table = pa.Table.from_pandas(df)
-    pq.write_table(table, ".tmp/file.parquet")
+    pq.write_table(table, filename)
 
-    with open(fileName) as f:
+    with open(filename) as f:
        object_data = f.read()
        s3.put_object(Body=object_data, Bucket=os.environ["s3_bucket"], Key="test/file.parquet")
 
-    
     return row
 
 # apply the result of the count_names function to the row
