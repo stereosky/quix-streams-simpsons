@@ -257,7 +257,7 @@ deployments:
   - name: S3 Sink
     application: s3_sink
     deploymentType: Service
-    version: cd4097b97697da63763f584c1e2765830cb6f174
+    version: 388fc56ba3c45c9af60cef9ed0a07a915507aa9b
     resources:
       cpu: 200
       memory: 500
@@ -330,6 +330,11 @@ deployments:
         required: false
         secretKey: aws_secret_access_key
       - name: AWS_REGION
+        inputType: FreeText
+        description: ''
+        required: false
+        value: eu-west-2
+      - name: AWS_DEFAULT_REGION
         inputType: FreeText
         description: ''
         required: false
