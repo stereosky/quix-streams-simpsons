@@ -20,7 +20,7 @@ def upload_to_s3(row: dict):
 
     df = pd.DataFrame.from_dict(row, orient='index')
 
-    wr.s3.to_parquet(df, "s3://hackathon-quix-tun/data/")
+    wr.s3.to_parquet(df, "s3://hackathon-quix-tun/data/df.parquet")
 
     return row
 
