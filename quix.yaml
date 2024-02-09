@@ -254,7 +254,7 @@ deployments:
         description: Username for the Redis instance
         required: false
         value: default
-  - name: "\U0001F4BE S3 Censored Parquet"
+  - name: "\U0001F4BE Censored Parquet S3 Sink"
     application: s3_sink
     deploymentType: Service
     version: 3c8c734889df9653790fcbff5e6d77d8af592034
