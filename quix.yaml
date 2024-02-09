@@ -6,26 +6,6 @@ metadata:
 
 # This section describes the Deployments of the data pipeline
 deployments:
-  - name: Dialogue Counter
-    application: dialogue_counter
-    deploymentType: Service
-    version: 50e1025052b8f1c29571c3716f26764c5f2b0257
-    resources:
-      cpu: 200
-      memory: 500
-      replicas: 1
-    desiredStatus: Stopped
-    variables:
-      - name: input
-        inputType: InputTopic
-        description: Name of the input topic to listen to.
-        required: true
-        value: simpsons-dialogue
-      - name: output
-        inputType: OutputTopic
-        description: Name of the output topic to write to.
-        required: true
-        value: dialogue-counter
   - name: Kafka Connect Sink
     application: Kafka Connect Sink
     deploymentType: Service
@@ -329,6 +309,26 @@ deployments:
         description: Name of the output topic to write to.
         required: false
         value: simpsons-dialogue
+  - name: "\U0001F9EE Dialogue Counter"
+    application: dialogue_counter
+    deploymentType: Service
+    version: 50e1025052b8f1c29571c3716f26764c5f2b0257
+    resources:
+      cpu: 200
+      memory: 500
+      replicas: 1
+    desiredStatus: Stopped
+    variables:
+      - name: input
+        inputType: InputTopic
+        description: Name of the input topic to listen to.
+        required: false
+        value: simpsons-dialogue
+      - name: output
+        inputType: OutputTopic
+        description: Name of the output topic to write to.
+        required: false
+        value: dialogue-counter
 
 # This section describes the Topics of the data pipeline
 topics:
