@@ -34,7 +34,7 @@ def upload_to_s3(row: dict):
     print(f"Writing to {path}")
     # Storing data in data lake
     wr.s3.to_parquet(
-        df=pd.DataFrame(row['count'], index=[0]),
+        df=pd.DataFrame(row["count"], index=[0]),
         path=path,
         boto3_session=my_session
     )
