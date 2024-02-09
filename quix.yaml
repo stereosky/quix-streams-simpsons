@@ -257,7 +257,7 @@ deployments:
   - name: S3 Sink
     application: s3_sink
     deploymentType: Service
-    version: 3d5bc4cc2a9d4ab22cabb82f26dea66b51b6f5da
+    version: 37269fbf4b40d8c7ea73045ce25ebebfb7de7b4e
     resources:
       cpu: 200
       memory: 500
@@ -324,6 +324,11 @@ deployments:
         description: Timezone from the IANA Time Zone Database (e.g. Asia/Singapore) for orchestrating time-based batching and file naming.
         required: true
         value: GMT
+      - name: aws_secret_access_key
+        inputType: Secret
+        description: ''
+        required: false
+        secretKey: aws_secret_access_key
 
 # This section describes the Topics of the data pipeline
 topics:
