@@ -332,7 +332,7 @@ deployments:
   - name: ☁️ Dialogue Count S3 Sink
     application: dialogue_counter_s3_sink
     deploymentType: Service
-    version: fd53303fb561389aeb965d9fcfa8fec7a4992187
+    version: 13279cc483153296a81a16a64b19f87678b23507
     resources:
       cpu: 200
       memory: 500
