@@ -21,11 +21,6 @@ variables:
     description: Comma separated list of parameters to look for in the received data
     defaultValue: none
     required: true
-  - name: aws_access_key_id
-    inputType: HiddenText
-    description: AWS S3 access key id
-    defaultValue: ''
-    required: false
   - name: s3_bucket
     inputType: FreeText
     description: AWS S3 bucket name
