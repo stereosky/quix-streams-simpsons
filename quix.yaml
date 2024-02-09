@@ -292,7 +292,7 @@ deployments:
   - name: ☁️ Censored S3 Sink
     application: s3_sink
     deploymentType: Service
-    version: 63965038ee736a09f95f5ade12bea3baad7b139a
+    version: 6113692f81f9cc40a3c620095995ab47a2d68209
     resources:
       cpu: 200
       memory: 500
