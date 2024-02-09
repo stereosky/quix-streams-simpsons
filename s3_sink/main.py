@@ -25,12 +25,14 @@ def upload_to_s3(row: dict):
     df = pd.DataFrame({"id": [1, 2], "value": ["foo", "boo"]})
 
     # Storing data on Data Lake
+    wr.s3.does_object_exist("")
     wr.s3.to_parquet(
         df=df,
         path="s3://hackathon-quix-tun/dataset/",
         dataset=True,
         database="my_db",
-        table="my_table"
+        table="my_table",
+        
     )
 
     return row
