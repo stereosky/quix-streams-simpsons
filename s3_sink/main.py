@@ -38,7 +38,7 @@ def upload_to_s3(row: dict):
         dataset=True,
         database="my_db",
         table="my_table",
-        
+        boto3_session=my_session
     )
 
     return row
