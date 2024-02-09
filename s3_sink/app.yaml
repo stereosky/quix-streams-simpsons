@@ -6,11 +6,6 @@ variables:
     description: Input topic
     defaultValue: dialogue-censored
     required: true
-  - name: batch_msg_count
-    inputType: FreeText
-    description: Message count in the batch (0 saves data as they arrive, -1 disables batching based on message count)
-    defaultValue: 1
-    required: false
   - name: parameters
     inputType: FreeText
     description: Comma separated list of parameters to look for in the received data
