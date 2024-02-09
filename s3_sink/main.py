@@ -23,10 +23,6 @@ input_topic = app.topic(os.environ["input"], value_deserializer=JSONDeserializer
 
 sdf = app.dataframe(input_topic)
 
-# Add custom badwords here and 
-custom_badwords = ['shorts']
-profanity.add_censor_words(custom_badwords)
-
 def count_and_replace_profanity(row: dict, state: State):
 
     dialogue = row["spoken_words"]
@@ -39,7 +35,7 @@ def count_and_replace_profanity(row: dict, state: State):
     return row
 
 # apply the result of the count_names function to the row
-sdf = sdf.apply(count_and_replace_profanity, stateful=True)
+sdf = sdf.apply(upload_to_s3)
 
 # Filter schema
 sdf = sdf[sdf.contains("censored_words")]
