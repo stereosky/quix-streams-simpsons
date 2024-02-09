@@ -11,11 +11,6 @@ variables:
     description: AWS S3 bucket name
     defaultValue: hackathon-quix-tun
     required: true
-  - name: prefix
-    inputType: FreeText
-    description: File name prefix
-    defaultValue: ''
-    required: false
   - name: s3_folder
     inputType: FreeText
     description: Name of the S3 folder to save to
