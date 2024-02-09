@@ -257,7 +257,7 @@ deployments:
   - name: "\U0001F4BE S3 Censored Parquet"
     application: s3_sink
     deploymentType: Service
-    version: 52a3b17832e40b69197d0ba2f35b6be177bd76d3
+    version: 3c8c734889df9653790fcbff5e6d77d8af592034
     resources:
       cpu: 200
       memory: 500
