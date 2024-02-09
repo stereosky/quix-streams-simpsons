@@ -6,11 +6,6 @@ variables:
     description: Input topic
     defaultValue: dialogue-counter
     required: true
-  - name: parameters
-    inputType: FreeText
-    description: Comma separated list of parameters to look for in the received data
-    defaultValue: ''
-    required: true
   - name: aws_access_key_id
     inputType: HiddenText
     description: AWS S3 access key id
