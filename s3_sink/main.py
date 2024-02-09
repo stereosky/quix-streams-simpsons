@@ -8,6 +8,7 @@ import pyarrow as pa
 import pyarrow.parquet as pq
 from quixstreams import Application, State, message_key
 
+
 s3_client = boto3.client(
     "s3",
     aws_access_key_id=os.environ("aws_access_key_id"),
