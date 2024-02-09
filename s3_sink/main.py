@@ -30,7 +30,7 @@ def upload_to_s3(row: dict):
 
     character_name = row['raw_character_text']
     timestamp = row['Timestamp']
-    path = f"s3://${s3_bucket}/simpsons/censored/{character_name}/{timestamp}.parquet"
+    path = f"s3://{s3_bucket}/simpsons/censored/{character_name}/{timestamp}.parquet"
     
     print(f"Writing to {path}")
     # Storing data in data lake
