@@ -28,13 +28,14 @@ def upload_to_s3(row: dict):
 
     character_name = row['raw_character_text']
     timestamp = row['Timestamp']
-
-    # Storing data on Data Lake
+    path = f"s3://hackathon-quix-tun/simpsons/{character_name}/{timestamp}.parquet"
+    # Storing data in data lake
     wr.s3.to_parquet(
         df=pd.DataFrame(row, index=[0]),
-        path=f"s3://hackathon-quix-tun/simpsons/{character_name}/{timestamp}.parquet",
+        path=path,
         boto3_session=my_session
     )
+
 
     return row
 
