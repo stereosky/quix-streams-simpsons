@@ -32,7 +32,7 @@ def upload_to_s3(row: dict):
     # Storing data on Data Lake
     wr.s3.to_parquet(
         df=df,
-        path="s3://hackathon-quix-tun/dataset/test.parquet",
+        path=f"s3://hackathon-quix-tun/simpsons/{df['raw_character_text']}/test.parquet",
         boto3_session=my_session
     )
 
