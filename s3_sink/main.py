@@ -1,16 +1,9 @@
 import os
 import pandas as pd
-import boto3
 import awswrangler as wr
 
 from quixstreams import Application, State
 from quixstreams.models.serializers.quix import JSONDeserializer, JSONSerializer
-
-s3 = boto3.client(
-    "s3",
-    aws_access_key_id = os.environ["aws_access_key_id"],
-    aws_secret_access_key = os.environ["aws_access_key"]
-)
 
 # Create an Application.
 app = Application.Quix(
@@ -26,13 +19,8 @@ sdf = app.dataframe(input_topic)
 def upload_to_s3(row: dict):
 
     df = pd.DataFrame.from_dict(row, orient='index')
-    filename = ".tmp/file.parquet"
-    table = pa.Table.from_pandas(df)
-    pq.write_table(table, filename)
 
-    with open(filename) as f:
-       object_data = f.read()
-       s3.put_object(Body=object_data, Bucket=os.environ["s3_bucket"], Key="test/file.parquet")
+    wr.s3.to_parquet(df, "s3://hackathon-quix-tun/data/")
 
     return row
 
