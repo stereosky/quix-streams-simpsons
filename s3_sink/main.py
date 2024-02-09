@@ -23,25 +23,14 @@ input_topic = app.topic(os.environ["input"], value_deserializer=JSONDeserializer
 
 sdf = app.dataframe(input_topic)
 
-def count_and_replace_profanity(row: dict, state: State):
+def upload_to_s3(row: dict):
 
-    dialogue = row["spoken_words"]
-
-    if dialogue != None and profanity.contains_profanity(dialogue):
-
-        row["censored_words"] = profanity.censor(dialogue)
+    print(f"********** row: {row}")
     
-    # return the updated row so more processing can be done on it
     return row
 
 # apply the result of the count_names function to the row
 sdf = sdf.apply(upload_to_s3)
-
-# Filter schema
-sdf = sdf[sdf.contains("censored_words")]
-
-# print the row with this inline function
-sdf = sdf.update(lambda row: print(row))
 
 if __name__ == "__main__":
     app.run(sdf)
