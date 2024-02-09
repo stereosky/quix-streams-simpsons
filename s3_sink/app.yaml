@@ -26,11 +26,6 @@ variables:
     description: AWS S3 access key id
     defaultValue: ''
     required: false
-  - name: aws_access_key
-    inputType: HiddenText
-    description: AWS S3 access key
-    defaultValue: ''
-    required: false
   - name: s3_bucket
     inputType: FreeText
     description: AWS S3 bucket name
