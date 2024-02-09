@@ -1,54 +1,55 @@
-import logging
-import boto3
-from botocore.exceptions import ClientError
 import os
-import pandas as pd
+from quixstreams import Application, State
+from quixstreams.models.serializers.quix import JSONDeserializer, JSONSerializer
 
-import pyarrow as pa
-import pyarrow.parquet as pq
-from quixstreams import Application, State, message_key
-from quixstreams.models.serializers.quix import JSONDeserializer
+from better_profanity import profanity
 
 
-s3_client = boto3.client(
-    "s3",
-    aws_access_key_id=os.environ["aws_access_key_id"],
-    aws_secret_access_key=os.environ["aws_access_key"]
-)
+# import our get_app function to help with building the app for local/Quix deployed code
+from app_factory import get_app
 
-def write_pandas_parquet_to_s3(df, bucketName, keyName, fileName):
-    # dummy dataframe
-    table = pa.Table.from_pandas(df)
-    pq.write_table(table, fileName)
+# import the dotenv module to load environment variables from a file
+from dotenv import load_dotenv
+load_dotenv(override=False)
 
-    # upload to s3
-    with open(fileName) as f:
-       object_data = f.read()
-       s3_client.put_object(Body=object_data, Bucket=bucketName, Key=keyName)
-
-def upload_row(row: dict):
-    print("********** upload_row")
-    df = pd.DataFrame.from_dict(row, orient='index')
-    write_pandas_parquet_to_s3(
-        df, os.environ["s3_bucket"], "test/file.parquet", ".tmp/file.parquet")
-    
-    return row
-
+# Create an Application.
 app = Application.Quix(
-    "s3_sink",
-    auto_offset_reset="earliest",
-    auto_create_topics=True,  # Quix app has an option to auto create topics
-)
+            consumer_group="s3_sink",
+            auto_offset_reset="earliest",
+            auto_create_topics=True,  # Quix app has an option to auto create topics
+        )
 
-# Define an input topic with Quix deserializer
 input_topic = app.topic(os.environ["input"], value_deserializer=JSONDeserializer())
+output_topic = app.topic(os.environ["output"], value_serializer=JSONSerializer())
 
-# Create a StreamingDataFrame and start building your processing pipeline
 sdf = app.dataframe(input_topic)
 
-# Print the transformed message to the console
-sdf.apply(upload_row)
+# Add custom badwords here and 
+custom_badwords = ['shorts']
+profanity.add_censor_words(custom_badwords)
+
+def count_and_replace_profanity(row: dict, state: State):
+
+    dialogue = row["spoken_words"]
+
+    if dialogue != None and profanity.contains_profanity(dialogue):
+
+        row["censored_words"] = profanity.censor(dialogue)
+    
+    # return the updated row so more processing can be done on it
+    return row
+
+# apply the result of the count_names function to the row
+sdf = sdf.apply(count_and_replace_profanity, stateful=True)
+
+# Filter schema
+sdf = sdf[sdf.contains("censored_words")]
+
+# print the row with this inline function
+sdf = sdf.update(lambda row: print(row))
+
+# publish the updated row to the output topic
+sdf = sdf.to_topic(output_topic)
 
 if __name__ == "__main__":
-    # Start message processing
     app.run(sdf)
